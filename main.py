@@ -178,6 +178,7 @@ def edit_notes(id):
             form.note_time.data = note.note_time
             form.email_send.data = note.email_send
             form.is_finished.data = note.is_finished
+            form.description.data = note.description
         else:
             abort(404)
     if form.validate_on_submit():
@@ -193,6 +194,7 @@ def edit_notes(id):
             note.note_time = form.note_time.data
             note.email_send = form.email_send.data
             note.is_finished = form.is_finished.data
+            note.description = form.description.data
             db_sess.commit()
             return redirect('/')
         else:
